@@ -35,6 +35,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Enable bash, zsh, and set as default user shell
+  environment.shells = with pkgs; [ bash zsh fish ];
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/New_York";
 
