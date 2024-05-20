@@ -26,7 +26,7 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    #(pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -34,6 +34,11 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+  ];
+
+  imports = [
+    apps/terminal.nix # Terminal emulators and general purpose CLI/TUI tools
+    apps/vim.nix # Editor config
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -64,13 +69,6 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
-  };
-
-  # Enable Neovim
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
   };
 
   # Enable zsh

@@ -35,6 +35,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # TODO this is for bondcliff only, where to put?
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
   # Enable bash, zsh, and set as default user shell
   environment.shells = with pkgs; [ bash zsh fish ];
   users.defaultUserShell = pkgs.zsh;
@@ -74,6 +77,10 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Enable OpenGL.
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -101,7 +108,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-      vim
     ];
   };
 
