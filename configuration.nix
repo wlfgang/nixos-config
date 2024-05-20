@@ -63,6 +63,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -79,7 +80,11 @@
 
   # Enable OpenGL.
   hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
+  hardware.opengl.driSupport = true;
+  hardware.opengl.driSupport32Bit = true;
+
+  hardware.opengl.extraPackages = [ pkgs.amdvlk ];
+  hardware.opengl.extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -114,6 +119,9 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  # Install hyprland
+  programs.hyprland.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -121,6 +129,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
+    glxinfo
+    pciutils
+    vulkan-tools
     wget
   ];
 

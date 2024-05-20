@@ -39,6 +39,7 @@
   imports = [
     apps/terminal.nix # Terminal emulators and general purpose CLI/TUI tools
     apps/vim.nix # Editor config
+    wm/hyprland.nix # Hyprland wayland compositor
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
