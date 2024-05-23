@@ -119,8 +119,11 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Install hyprland
-  programs.hyprland.enable = true;
+  # Install sway
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
